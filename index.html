@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Keren Ultra Smooth</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://files.catbox.moe/ugnlmo.jpeg') no-repeat center center/cover;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        .bg-animate {
+            animation: backgroundWiggle 3s infinite ease-in-out alternate;
+        }
+        @keyframes backgroundWiggle {
+            0% { background-position: center center; }
+            50% { background-position: center 5px; }
+            100% { background-position: center -5px; }
+        }
+        .container {
+            background: rgba(30, 30, 30, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        img.profile {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 20px red;
+            transition: transform 0.5s ease;
+        }
+        img.profile:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        h2, p, a, button {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        h2 a {
+            color: #fff;
+            text-decoration: none;
+        }
+        h2 a:hover {
+            text-decoration: underline;
+        }
+        p.description {
+            font-size: 14px;
+            color: #d3d3d3;
+        }
+        .btn {
+            display: inline-block;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 12px 20px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(173, 216, 230, 0.9);
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: scale(1.05);
+        }
+        .rainbow-btn {
+            background: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, violet);
+            background-size: 400% 400%;
+            animation: rainbow 6s ease infinite;
+            color: white;
+            padding: 12px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            opacity: 0.5;
+            box-shadow: 0 0 10px black;
+        }
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 12px;
+            color: #d3d3d3;
+        }
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall 3s linear infinite;
+        }
+        @keyframes fall {
+            from { transform: translateY(-10px); opacity: 1; }
+            to { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://files.catbox.moe/san7wo.png" alt="Foto Profil" class="profile">
+        <h2><a href="https://whatsapp.com/channel/0029VatyKhHI7BeNRuihT603" target="_blank">MuhaMMad NuR Haq★</a></h2>
+        <p class="description">Hallo selamat datang di BLOG||SANTRI_MEDSOS! silahkan pilih button button di bawah atau pencet nama di atas untuk masuk saluran WhatsApp.</p>
+        <a href="https://wa.me/6281234567890" class="btn">WhatsApp Admin</a>
+        <a href="https://muhammadnurhaq.github.io/muhammadnurhaq/" class="btn">Beli Malware</a>
+        <a href="https://s.shopee.co.id/50J3tWdsrg" class="btn">WiFi Hacking</a>
+        <button class="rainbow-btn" onclick="toggleAudio()">Play / Pause MP3</button>
+        <audio id="bgMusic" src="https://files.catbox.moe/c4sjcv.mp3"></audio>
+    </div>
+    <div class="footer">by santri medsos</div>
+    <script>
+        const body = document.body;
+        function toggleAudio() {
+            const audio = document.getElementById('bgMusic');
+            if (audio.paused) {
+                audio.play();
+                body.classList.add('bg-animate');
+                startStars();
+            } else {
+                audio.pause();
+                body.classList.remove('bg-animate');
+                clearStars();
+            }
+        }
+        let starInterval;
+        function startStars() {
+            starInterval = setInterval(() => {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = Math.random() * window.innerWidth + 'px';
+                star.style.top = '-10px';
+                document.body.appendChild(star);
+                setTimeout(() => star.remove(), 3000);
+            }, 150);
+        }
+        function clearStars() {
+            clearInterval(starInterval);
+            document.querySelectorAll('.star').forEach(star => star.remove());
+        }
+    </script>
+</body>
+</html>
